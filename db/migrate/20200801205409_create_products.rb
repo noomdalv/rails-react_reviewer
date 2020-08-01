@@ -1,6 +1,6 @@
-class CreateDockerImages < ActiveRecord::Migration[6.0]
+class CreateProducts < ActiveRecord::Migration[6.0]
   def change
-    create_table :docker_images do |t|
+    create_table :products do |t|
       t.string :name
       t.string :image_url
       t.string :slug

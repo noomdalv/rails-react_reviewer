@@ -1,4 +1,4 @@
-class DockerImage < ApplicationRecord
+class Product < ApplicationRecord
   has_many :reviews
 
   before_create :slugify
