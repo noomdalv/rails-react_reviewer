@@ -1,6 +1,8 @@
 module Api
   module V1
     class ProductsController < ApplicationController
+      protect_from_forgery with: :null_session
+
       def index
         products = Product.all
 
@@ -52,5 +54,6 @@ module Api
       def options
         @options ||= { include: %i[reviews] }
       end
+    end
   end
 end
