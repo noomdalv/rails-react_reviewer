@@ -9,35 +9,35 @@
 products = Product.create([
   {
     name: "Atom",
-    image_url: "assets/atomlogo.png"
+    image_url: "http://localhost:3000/assets/atomlogo.png"
   },
-  {    
+  {
     name: "Visual Studio Code",
-    image_url: "assets/visualstudiologo.png"
+    image_url: "http://localhost:3000/assets/visualstudiologo.png"
   },
   {
     name: "Vim",
-    image_url: "assets/vimlogo.png"
+    image_url: "http://localhost:3000/assets/vimlogo.png"
   },
   {
     name: "Notepad++",
-    image_url: "assets/notepadpluspluslogo.png"
+    image_url: "http://localhost:3000/assets/notepadpluspluslogo.png"
   },
   {
     name: "Brackets",
-    image_url: "assets/bracketslogo.png"
+    image_url: "http://localhost:3000/assets/bracketslogo.png"
   },
   {
     name: "Bluefish",
-    image_url: "assets/bluefishlogo.png"
+    image_url: "http://localhost:3000/assets/bluefishlogo.png"
   },
   {
     name: "Sublime Text",
-    image_url: "assets/sublimelogo.png"
+    image_url: "http://localhost:3000/assets/sublimelogo.png"
   },
   {
     name: "Emacs",
-    image_url: "assets/emacslogo.png"
+    image_url: "http://localhost:3000/assets/emacslogo.png"
   }
 ])
 
