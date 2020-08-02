@@ -43,7 +43,7 @@ const ProductCard = props => {
   return (
     <Card>
       <ProductLogo>
-        <img src={image_url} alt={name} />
+        <img src={image_url} alt={name} />        
       </ProductLogo>
 
       <ProductName>{name}</ProductName>

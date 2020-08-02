@@ -19,7 +19,7 @@ const Column = styled.div`
   }
 `
 const Main = styled.div`
-  padding-left: 50px;
+  padding-left: 30%;
 `
 
 const Product = props => {
