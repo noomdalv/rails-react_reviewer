@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import ProductCard from './ProductCard'
 import styled from 'styled-components'
+import './Products.css'
 
 const Home = styled.div`
   text-align: center;
@@ -12,7 +13,7 @@ const Header = styled.div`
   padding: 100px 100px 10px 100px;
 
   h1 {
-    font-family: "Lucida Sans Unicode", sans-serif;
+    font-family: 'Rowdies', cursive;
     font-size: 40px;
   }
 `

@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
 import Header from './Header'
 import ReviewForm from './ReviewForm'
+import Review from './Review'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -19,7 +20,7 @@ const Column = styled.div`
   }
 `
 const Main = styled.div`
-  padding-left: 30%;
+  padding-left: 100px;
 `
 
 const Product = props => {
@@ -68,6 +69,14 @@ const Product = props => {
     setReview({ ...review, score })
   }
 
+  let reviews
+  if (loaded && product.included) {
+    reviews = product.included.map((item, index) => {
+      return <Review key={index} attributes={item.attributes} />
+    })
+  }
+
+
   console.log("product = ", product)
   return (
     <Wrapper>
@@ -78,7 +87,7 @@ const Product = props => {
           <Column>
             <Main>
               <Header attributes={product.data.attributes} reviews={product.included} />
-              <div className="reviews"></div>
+              {reviews}
             </Main>
           </Column>
 

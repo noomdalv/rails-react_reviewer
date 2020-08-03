@@ -2,13 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  padding: 150px 100px 50px 0;
-  font-size: 18px;
+  padding: 120px 100px 50px 0;
+  font-size: 24px;
 
   img {
-    margin: auto;
-    height: 80px;
-    width: 140px;
+    height: 70px;
+    width: 120px;
+    margin-right: 20px;
   }
 `
 const TotalReviews = styled.div`
@@ -27,8 +27,10 @@ const Header = props => {
 
   return (
     <Wrapper>
-      <img src={image_url} alt={name} />
-      <h1>{name}</h1>
+      <h1>
+        <img src={image_url} alt={name} />
+        {name}
+      </h1>
       <div>
         <TotalReviews>{total} User Reviews</TotalReviews>
         <div className="starRating"></div>

@@ -1,5 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Link } from 'react-router-dom'
+import Rating from '../Rating/Rating'
 import styled from 'styled-components'
 
 const Card = styled.div`
@@ -8,13 +9,13 @@ const Card = styled.div`
   font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 `
 const ProductLogo = styled.div`
-  width: 120px;
+  width: 100px;
   margin: auto;
   padding-top: 10px;
 
   img {
-    height: 70px;
-    width: 120px;
+    height: 60px;
+    width: 100px;
     border-radius: 3px;
   }
 `
@@ -50,7 +51,7 @@ const ProductCard = props => {
 
       <ProductName>{name}</ProductName>
 
-      <div className="product-score">{avg_score}</div>
+      <Rating score={avg_score} />
 
       <LinkWrapper>
         <Link to={`/products/${slug}`}>View Product</Link>
