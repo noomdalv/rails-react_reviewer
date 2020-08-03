@@ -3,8 +3,9 @@ import { BrowserRouter as Router, Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 const Card = styled.div`
-  border: solid 1px #efefef;
+  border: solid 1px #e3e3e3;
   background: white;
+  font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 `
 const ProductLogo = styled.div`
   width: 120px;
@@ -20,6 +21,7 @@ const ProductLogo = styled.div`
 
 const ProductName = styled.div`
   padding: 20px 0 10px 0;
+  font-weight: bold;
 `
 
 const LinkWrapper = styled.div`
@@ -43,7 +45,7 @@ const ProductCard = props => {
   return (
     <Card>
       <ProductLogo>
-        <img src={image_url} alt={name} />        
+        <img src={image_url} alt={name} />
       </ProductLogo>
 
       <ProductName>{name}</ProductName>

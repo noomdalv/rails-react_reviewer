@@ -2,11 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
-  margin: auto;
-  padding: 50px 100px 50px 0;
+  padding: 150px 100px 50px 0;
   font-size: 18px;
 
   img {
+    margin: auto;
     height: 80px;
     width: 140px;
   }

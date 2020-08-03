@@ -12,7 +12,8 @@ const Header = styled.div`
   padding: 100px 100px 10px 100px;
 
   h1 {
-    font-size: 42px;
+    font-family: "Lucida Sans Unicode", sans-serif;
+    font-size: 40px;
   }
 `
 const Subheader = styled.div`
@@ -43,7 +44,7 @@ const Products = () => {
   return (
     <Home>
       <Header>
-        <h1>Reviewer</h1>
+        <h1>REVIEW SERVICE</h1>
         <Subheader className="subheader">Reliable and accurate reviews.</Subheader>
       </Header>
       <Grid>

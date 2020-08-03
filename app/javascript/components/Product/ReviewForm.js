@@ -125,7 +125,7 @@ const ReviewForm = props => {
             <input
               type="text"
               name="title"
-              placeholder="Review title"
+              placeholder="Add Title"
               value={props.review.title || ""}
               onChange={props.handleChange}
             />
@@ -135,6 +135,7 @@ const ReviewForm = props => {
             <input
               type="text"
               name="description"
+              placeholder="Add Description"
               value={props.review.description || ""}
               onChange={props.handleChange}
             />
