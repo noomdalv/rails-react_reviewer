@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
 import axios from 'axios'
 import Header from './Header'
+import ReviewForm from './ReviewForm'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -33,30 +34,61 @@ const Product = props => {
 
     axios.get(url)
     .then(resp => {
-      console.log("resp = ", resp)
       setProduct(resp.data)
       setLoaded(true)
     })
     .catch(resp => console.log(resp))
   }, [])
 
+  const handleChange = (e) => {
+    e.preventDefault()
+
+    setReview({ ...review, [e.target.name]: e.target.value })
+    console.log(review)
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const csrfToken = document.querySelector('[name=csrf-token]').content
+    axios.defaults.headers.common['X-CSRF-TOKEN'] = csrfToken
+
+    const product_id = product.data.id
+
+    axios.post("/api/v1/reviews", { review, product_id })
+    .then(resp => {
+      const included = [...product.included, resp.data.data]
+      setProduct({ ...product, included })
+      setReview({ title: "", description: "", score: 0 })
+    })
+    .catch(resp => console.log(resp))
+  }
+
   console.log("product = ", product)
   return (
     <Wrapper>
-      <Column>
-        <Main>
-          {
-            loaded &&
-            <Header attributes={product.data.attributes} reviews={product.included} />
-          }
 
-          <div className="reviews"></div>
-        </Main>
-      </Column>
+      {
+        loaded &&
+        <Fragment>
+          <Column>
+            <Main>
+              <Header attributes={product.data.attributes} reviews={product.included} />
+              <div className="reviews"></div>
+            </Main>
+          </Column>
 
-      <Column>
-        <div className="review-form">Review form</div>
-      </Column>
+          <Column>
+            <ReviewForm
+              handleChange={handleChange}
+              handleSubmit={handleSubmit}
+              attributes={product.data.attributes}
+              review={review}
+            />
+          </Column>
+        </Fragment>
+      }
+
     </Wrapper>
   )
 }
