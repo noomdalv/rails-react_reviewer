@@ -64,6 +64,11 @@ const Product = props => {
     .catch(resp => console.log(resp))
   }
 
+  const setRating = (score, e) => {
+    e.preventDefault()
+    setReview({ ...review, score })
+  }
+
   console.log("product = ", product)
   return (
     <Wrapper>
@@ -82,6 +87,7 @@ const Product = props => {
             <ReviewForm
               handleChange={handleChange}
               handleSubmit={handleSubmit}
+              setRating={setRating}
               attributes={product.data.attributes}
               review={review}
             />

@@ -18,6 +18,7 @@ const RatingBox = styled.div`
   justify-content: center;
   flex-direction: row-reverse;
   position: relative;
+  margin-top: 12px;
 
   input {
     display: none;
@@ -40,32 +41,87 @@ const RatingBox = styled.div`
     background-image: url("data:image/svg+xml;charset=UTF-8,${Hover}")
   }
 `
-const RatingTitle = styled.div`
+const Field = styled.div`
+  border-radius: 4px;
 
+  input {
+    width: 96%;
+    min-height: 50px;
+    border-radius: 4px;
+    border: 1px solid #e6e6e6;
+    margin: 0 0 12px 0;
+    padding: 12px;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 80px;
+    border-radius: 4px;
+    border: 1px solid #e6e6e6;
+    margin: 12px 0;
+    padding: 12px;
+  }
+`
+const Wrapper = styled.div`
+  background: #fff;
+  height: 100vh;
+  padding: 20px;
+  padding-top: 100px;
+  background: black;
+`
+const SubmitBtn = styled.button`
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  color: white;
+  background: #333;
+  border-radius: 4px;
+  padding: 12px;
+  transition: ease-in-out 0.1s;
+  border: 1px solid #fff;
+
+  &:hover {
+    background: #fff;
+    color: black;
+    border: 1px solid #fff;
+  }
+`
+const Headline = styled.div`
+  padding: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+`
+const RatingTitle = styled.div`
+  font-size: 20px;
+  padding-bottom: 20px;
+  font-weight: bold;
 `
 
 const ReviewForm = props => {
-  const ratingOptions = [5, 4, 3, 2, 1].map((score, index) => {
+  const ratingOptions = [5,4,3,2,1].map((score, index) => {
     return (
-      <React.Fragment>
+      <React.Fragment key={`score-${score}`}>
         <input
           type="radio"
           value={score}
           name="rating"
+          checked={props.review.score == score}
           onChange={() => console.log("selected ", score )}
           id={`rating-${score}`}
         />
-        <label></label>
+        <label onClick={props.setRating.bind(this, score)}></label>
       </React.Fragment>
     )
   })
 
   return (
     <div>
-      <div className="wrapper">
+      <Wrapper>
         <form onSubmit={props.handleSubmit}>
-          <div>Have an experience with {props.attributes.name}? Share your review!</div>
-          <div className="field">
+          <Headline>Have an experience with {props.attributes.name}? <br/> Share your review!</Headline>
+          <Field>
             <input
               type="text"
               name="title"
@@ -73,26 +129,26 @@ const ReviewForm = props => {
               value={props.review.title || ""}
               onChange={props.handleChange}
             />
-          </div>
+          </Field>
 
-          <div className="field">
+          <Field>
             <input
               type="text"
               name="description"
               value={props.review.description || ""}
               onChange={props.handleChange}
             />
-          </div>
+          </Field>
 
-          <div className="field">
+          <Field>
             <RatingContainer>
-              <div className="rating-title-text">Rate this Editor</div>
+              <RatingTitle>Rate This Editor</RatingTitle>
               <RatingBox>{ratingOptions}</RatingBox>
             </RatingContainer>
-          </div>
-          <button type="submit">Submit Your Review</button>
+          </Field>
+          <SubmitBtn type="submit">Submit Your Review</SubmitBtn>
         </form>
-      </div>
+      </Wrapper>
     </div>
   )
 }
